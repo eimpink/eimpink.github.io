@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Biomedical R&D Engineer</title>
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary-color: #AC2B37; /* WPI Crimson-ish */
+            --secondary-color: #A9B0B7; /* Gray */
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Nav */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hero {
+            /* The URL points to your image file */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('image/IMG_1813.jpg');
+            background-size: cover;       /* Ensures image covers the whole area */
+            background-position: center;  /* Centers the image */
+            padding: 100px 0;
+            text-align: center;
+            color: var(--white);          /* Changes text to white for contrast */
+        }
+
+        /* Force these specific text elements to be white */
+        .hero h1, .hero h2, .hero p {
+            color: var(--white); 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Adds a subtle shadow for readability */
+        }
+
+        /* .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+        } */
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Sections General */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        /* Education */
+        .edu-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .edu-details h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .edu-details p { color: var(--text-light); }
+        .edu-date { font-weight: 600; color: var(--primary-color); }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #e9ecef;
+            color: #495057;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0 5px 8px 0;
+            border: 1px solid #dee2e6;
+        }
+
+        /* Experience */
+        .experience-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.2s;
+        }
+        
+        .experience-card:hover {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .exp-role { font-size: 1.2rem; font-weight: 700; }
+        .exp-company { color: var(--primary-color); font-weight: 600; display: block; margin-bottom: 15px;}
+        .exp-date { color: var(--text-light); font-style: italic; }
+        
+        .experience-card ul {
+            padding-left: 20px;
+            color: #555;
+        }
+        .experience-card li { margin-bottom: 8px; }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 0; /* Remove default padding so image touches edges */
+            overflow: hidden; /* Ensures image corners are rounded like the card */
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Crops image so it doesn't stretch */
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-content {
+            padding: 25px; /* Adds the padding back for the text area */
+        }
+
+        .project-card h3 { margin-bottom: 5px; color: var(--text-dark); }
+        .project-sub { color: var(--primary-color); font-size: 0.9rem; margin-bottom: 15px; display: block; font-weight: 600;}
+        
+        /* Footer */
+        footer {
+            background: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+        footer a { color: #fff; text-decoration: underline; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .edu-item { display: block; }
+            .edu-date { display: block; margin-top: 10px; }
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Eric Impink</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="about">
+        <div class="container">
+            <h1>Eric Impink</h1>
+            <h2>Biomedical / Electrical & Computer Engineering R&D</h2>
+            <p>
+                Senior Biomedical Engineering student seeking an R&D Intern position to contribute to medical device verification and testing within a cross-functional development team. 
+                Strong foundation in circuit design, embedded systems, and technical documentation, with hands-on experience in MATLAB, Python, and analytical problem-solving.
+            </p>
+            <div>
+                <a href="mailto:[YOUR EMAIL HERE]" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="edu-item">
+                <div class="edu-details">
+                    <h3>Worcester Polytechnic Institute (WPI)</h3>
+                    <p><strong>Master of Engineering</strong>, Biomedical Engineering</p>
+                </div>
+                <span class="edu-date">Exp. May 2027</span>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-details">
+                    <h3>Worcester Polytechnic Institute (WPI)</h3>
+                    <p><strong>Bachelor of Science</strong>, Biomedical Engineering</p>
+                    <p>Minor in Electrical and Computer Engineering</p>
+                    <p><em>GPA: 3.78</em></p>
+                </div>
+                <span class="edu-date">Exp. May 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Technical Strengths</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3>Applications</h3>
+                    <div>
+                        <span class="skill-tag">Onshape</span>
+                        <span class="skill-tag">Solidworks</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">NI Multisim</span>
+                        <span class="skill-tag">LTSpice</span>
+                        <span class="skill-tag">GitHub</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Design Skills</h3>
+                    <div>
+                        <span class="skill-tag">CAD</span>
+                        <span class="skill-tag">Circuit Prototyping</span>
+                        <span class="skill-tag">FDM Rapid Prototyping</span>
+                        <span class="skill-tag">Oscilloscope</span>
+                        <span class="skill-tag">Soldering</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">C / C++</span>
+                        <span class="skill-tag">R</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <span class="exp-role">R&D Engineering Intern</span>
+                    <span class="exp-date">May 2025 - Aug 2025</span>
+                </div>
+                <span class="exp-company">UFP Technologies | Chicopee, MA</span>
+                <ul>
+                    <li>Delivered high quality prototypes following customer specifications through RF, impulse, and heat welding processes.</li>
+                    <li>Managed material procurement and document control for intern design project across multiple departments.</li>
+                    <li>Executed validation testing including tensile strength analysis and microscopic measurement of weld joints to ensure conformance to customer specifications.</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-header">
+                    <span class="exp-role">Engineering Associate</span>
+                    <span class="exp-date">May 2024 - Aug 2024</span>
+                </div>
+                <span class="exp-company">Cancer Check Labs, LLC | Dallas, TX</span>
+                <ul>
+                    <li>Automated software deployment workflows using Bash and Python scripts to push Git updates to Raspberry Pi–based filtration and LIMS devices, cutting fleet update time by ∼80%.</li>
+                    <li>Collaborated on development of filtration workstations across device software, hardware, and central fluid management.</li>
+                    <li>Improved filtration system reliability and efficiency by isolating root cause for early stage device failures.</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-header">
+                    <span class="exp-role">Biomedical Engineer Intern</span>
+                    <span class="exp-date">May 2023 - May 2025</span>
+                </div>
+                <span class="exp-company">Onco Filtration, Inc. | Woburn, MA & Dallas, TX</span>
+                <ul>
+                    <li>Integrated open-source slide viewing software with Python to automate pathology pre-screening of blood samples.</li>
+                    <li>Experimented with cell capture efficiency with various mechanical and chemical techniques in BSL-2 laboratory.</li>
+                    <li>Designed and executed validation test protocols using Arduino-driven fixtures to verify mechanical and functional performance.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <h3>Oxygen Concentrator for Bubble CPAP (MQP)</h3>
+                    <span class="project-sub">Worcester Polytechnic Institute | Dec 2025</span>
+                    <p>Optimized airflow and pressure regulation with a MATLAB-based fluidic modeling software (MOCA). Developed a control system with multiple peripherals including solenoids, sensors, and a dynamic power system to accommodate both wall power and 12-volt batteries.</p>
+                    <div style="margin-top:10px;">
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Control Systems</span>
+                        <span class="skill-tag">Fluidic Modeling</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Wearable PPG Finger Clip for Raynaud’s Detection</h3>
+                    <span class="project-sub">Worcester Polytechnic Institute | Mar 2025 - May 2025</span>
+                    <p>Designed a wearable peripheral blood oxygen saturation (SPO2) and temperature sensing device. Built an Arduino-based circuit using operational amplifiers, analog filters, and photodiode/photoresistor modules to achieve accurate SPO2 readings and heart rate abnormality detection.</p>
+                    <div style="margin-top:10px;">
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">Circuit Design</span>
+                        <span class="skill-tag">SPO2</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>ECG Circuit and Signal Analysis</h3>
+                    <span class="project-sub">Worcester Polytechnic Institute | Dec 2022</span>
+                    <p>Built and experimented with an Arduino-driven electrocardiogram circuit to record and identify components of the cardiac cycle. Implemented operational amplifiers and analog filtering methods to isolate cardiac signal, and developed a signal processing script in MATLAB to extract components of the PQRS wave.</p>
+                    <div style="margin-top:10px;">
+                        <span class="skill-tag">Signal Processing</span>
+                        <span class="skill-tag">Analog Filters</span>
+                        <span class="skill-tag">Matlab</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I am open to R&D opportunities in Medical Device Verification and Testing.</p>
+            <br>
+            <p>
+                <a href="mailto:eimpink16@gmail.com ">Email Me</a> &nbsp;|&nbsp; 
+                <a href="https://www.linkedin.com/in/eric-impink/">LinkedIn</a> &nbsp;|&nbsp; 
+                <a href="https://github.com/eimpink">GitHub</a>
+            </p>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Eric Impink</p>
+        </div>
+    </footer>
+
+</body>
+</html>
